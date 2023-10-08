@@ -32,4 +32,4 @@ class LogSystem(object):
             self.logger.setLevel(loggingLevel)
             self.loggingLevel = loggingLevel
 
-ls = LogSystem()
+logger = LogSystem()
