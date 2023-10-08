@@ -4,8 +4,19 @@
 
 ## 下载
 
+### 从pip下载
+
 ```shell
 pip install qin
+```
+
+### 克隆本项目
+
+```shell
+git clone git@github.com:Alndaly/qin-cli.git
+cd qin-cli
+python setup.py sdist
+pip install .
 ```
 
 ## 脚本相关文件初始化
