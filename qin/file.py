@@ -6,15 +6,22 @@ from .config import config
 
 file_app = typer.Typer()
 
-def delete_file(path: str, log: bool = True, temp: bool = True):
+def delete_file(path: str, temp: bool = True):
     file_name = path.split('/')[-1]
     if temp:
         os.rename(path, os.path.join(config.TRASH_DIR_PATH, file_name))
     else:
         os.remove(path=path)
-    if log:
-        print(f"{path}已删除")
         
+def get_top_files_in_directory(path):
+    all_files = []  # 用于保存所有文件的全路径
+    # 列出当前文件夹中的所有文件和子文件夹
+    for filename in os.listdir(path):
+        file_path = os.path.join(path, filename)
+        if os.path.isfile(file_path):
+            all_files.append(file_path)
+    return all_files
+
 def get_all_files_in_directory(path):
     all_files = []  # 用于保存所有文件的路径
     # 递归遍历文件夹
@@ -25,21 +32,26 @@ def get_all_files_in_directory(path):
     return all_files
 
 @file_app.command("delete")
-def delete(path: Annotated[str, typer.Option("--path", "-p")], include: Annotated[str, typer.Option("--include", "-i")], recursion: Annotated[bool, typer.Option("--recursion", "-r")] = False, log: Annotated[bool, typer.Option("--log", "-l")] = False):
+def delete(path: Annotated[str, typer.Option("--path", "-p")], include: Annotated[str, typer.Option("--include", "-i")], recursion: Annotated[bool, typer.Option("--recursion", "-r")] = False, force: Annotated[bool, typer.Option("--force", "-f")] = False):
     if recursion:
         file_path_list = get_all_files_in_directory(path=path)
-        file_path_list = list(filter(lambda file_path: include in file_path, file_path_list))
-        print(f"要删除的文件如下:")
+    else: 
+        file_path_list = get_top_files_in_directory(path=path)
+    file_path_list = list(filter(lambda file_path: include in file_path, file_path_list))
+    print(f"要删除的文件如下:")
+    for file_path in file_path_list:
+        print(f'{file_path}')
+    print(f'共计 [bold red]{len(file_path_list)}[/bold red] 个')
+    if len(file_path_list) == 0:
+        print('程序结束')
+        return
+    print(f"确认删除吗?[bold red]{'注意，你已经选择-f，此项行为将会直接从磁盘删除文件不可恢复！' if force else ''}[/bold red]")
+    user_ans = typer.prompt("yes(y)/no(n)", default='n')
+    if user_ans == 'yes' or user_ans == 'y':
         for file_path in file_path_list:
-            print(f'{file_path}')
-        print(f'共计 [bold red]{len(file_path_list)}[/bold red] 个')
-        if len(file_path_list) == 0:
-            print('程序结束')
-            return
-        print('确认删除吗?')
-        user_ans = typer.prompt("yes(y)/no(n) 默认n")
-        if user_ans == 'yes' or user_ans == 'y':
-            for file_path in file_path_list:
-                delete_file(file_path)
-        else:
-            print('程序结束')
+            if force:
+                delete_file(file_path, temp=False)
+            else:
+                delete(file_path)
+    else:
+        print('程序结束')
