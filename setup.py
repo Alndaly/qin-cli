@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="qin",
-    version="0.0.1",
+    version="0.0.2",
     keywords=("pip", "tools"),
     description="cli tool",
     entry_points={
