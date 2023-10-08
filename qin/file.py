@@ -9,9 +9,10 @@ file_app = typer.Typer()
 def delete_file(path: str, temp: bool = True):
     file_name = path.split('/')[-1]
     if temp:
-        os.rename(path, os.path.join(config.TRASH_DIR_PATH, file_name))
+        os.rename(path, os.path.join(config.TRASH_PATH, file_name))
     else:
         os.remove(path=path)
+    print(f"{path} 删除成功")
         
 def get_top_files_in_directory(path):
     all_files = []  # 用于保存所有文件的全路径
@@ -52,6 +53,6 @@ def delete(path: Annotated[str, typer.Option("--path", "-p")], include: Annotate
             if force:
                 delete_file(file_path, temp=False)
             else:
-                delete(file_path)
+                delete_file(file_path)
     else:
         print('程序结束')
