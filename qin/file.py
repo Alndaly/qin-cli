@@ -1,8 +1,10 @@
 import os
 import typer
+import oss2
+import time
 from typing import Annotated
 from rich import print
-from .config import config
+from .config.config import config
 
 file_app = typer.Typer()
 
@@ -31,6 +33,13 @@ def get_all_files_in_directory(path):
             file_path = os.path.join(foldername, filename)  # 构建文件的完整路径
             all_files.append(file_path)
     return all_files
+
+@file_app.command("upload")
+def upload(path: Annotated[str, typer.Option("--path", "-p")]):
+    auth = oss2.Auth(config.get('ImgBed').get('AccessKeyId'), config.get('ImgBed').get('AccessKeySecret'))
+    bucket = oss2.Bucket(auth, config.get('ImgBed').get('EndPoint'), config.get('ImgBed').get('BucketName'))
+    file_suffix = path.split('.')[-1]
+    bucket.put_object_from_file(f"{config.get('ImgBed').get('Folder')}/{time.localtime()}.{file_suffix}", path)
 
 @file_app.command("delete")
 def delete(path: Annotated[str, typer.Option("--path", "-p")], include: Annotated[str, typer.Option("--include", "-i")], recursion: Annotated[bool, typer.Option("--recursion", "-r")] = False, force: Annotated[bool, typer.Option("--force", "-f")] = False):

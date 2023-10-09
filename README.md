@@ -19,14 +19,6 @@ python setup.py sdist
 pip install .
 ```
 
-## 脚本相关文件初始化
-
-> 下载之后必须做这一步，涉及到垃圾箱暂存文件夹和脚本配置文件的初始化
-
-```shell
-qin init
-```
-
 ## 媒体文件转格式
 
 ```shell
