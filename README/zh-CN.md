@@ -68,3 +68,11 @@ qin file upload -p path/to/your/file
 ```
 
 - `-p` 要上传的文件的路径
+
+## 转换pdf为png
+
+```shell
+qin file pdf2png -p path/to/your/file
+```
+
+- `p` 要转换的pdf文件路径

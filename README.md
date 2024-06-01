@@ -71,7 +71,10 @@ qin file upload -p path/to/your/file
 
 - `-p` Path of the file to be uploaded
 
+## Convert PDF to PNG
 
+```shell
+qin file pdf2png -p path/to/your/file
+```
 
-
-
+- `-p` Path to the PDF file to be converted

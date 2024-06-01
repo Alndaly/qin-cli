@@ -2,6 +2,7 @@ import os
 import typer
 import oss2
 import time
+import pymupdf
 from typing import Annotated
 from tqdm import tqdm
 from rich import print
@@ -35,6 +36,16 @@ def get_all_files_in_directory(path):
             all_files.append(file_path)
     return all_files
     
+@file_app.command("pdf2png")
+def pdf2png(path: Annotated[str, typer.Option("--path", "-p")]):
+    doc = pymupdf.open(path) # open a document
+    with tqdm(total=len(doc), unit='张', desc='转换中') as progress_bar:
+        for page in doc: # iterate the document pages
+            image = page.get_pixmap(matrix=pymupdf.Matrix(2, 2)) # get plain text encoded as UTF-8
+            image.pil_save("page-%i.png" % page.number)
+            progress_bar.update(1)
+    print('转换完成')
+
 @file_app.command("upload")
 def upload(path: Annotated[str, typer.Option("--path", "-p")]):
     auth = oss2.Auth(config.get('ImgBed').get('AccessKeyId'), config.get('ImgBed').get('AccessKeySecret'))

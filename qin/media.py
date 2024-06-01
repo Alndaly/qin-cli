@@ -14,8 +14,7 @@ def convert(input_file: Annotated[str, typer.Option("--input-file", "-i")], outp
         print(f"文件[bold]{input_file}[/bold]不存在")
         raise typer.Abort()
     ffmpeg.input(input_file).output(output_file).run()
-    print(f"转换成功")
-    
+
 @media_app.command("download")
 def download(url: Annotated[str, typer.Option("--url", "-u")], format: Annotated[str, typer.Option("--format", "-f")]):
     download_time = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
