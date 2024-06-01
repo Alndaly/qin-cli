@@ -10,7 +10,7 @@ with open("./LICENSE", "r", encoding="utf-8") as fp:
     
 setup(
     name="qin",
-    version="0.0.2",
+    version="0.1.0",
     keywords=["pip", "tools"],
     description="Interesting toolset",
     entry_points={
