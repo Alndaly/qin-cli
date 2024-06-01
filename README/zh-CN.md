@@ -13,15 +13,19 @@
 - 默认配置文件为`~/.qin/config.json`。
 - 默认临时垃圾文件夹为`~/.qin/trash`。
 
+如果需要本项目的图片上传功能，请务必配置好config.json中的`oss`相关字段。
+
+## 安装
+
 ## 下载
 
-### 从pip下载（推荐方式）
+### 方式1：从pip下载（推荐方式）
 
 ```shell
 pip install qin
 ```
 
-### 克隆本项目
+### 方式2：克隆本项目
 
 ```shell
 git clone git@github.com:Alndaly/qin-cli.git
@@ -49,6 +53,26 @@ qin media download -u https://www.bilibili.com/video/BV117411J719 -f mp3
 - `-f` 视频格式 支持mp3/mp4
 
 > 如果媒体文件是视频类型，则会自动转为mp3格式。
+
+## 视频转gif
+
+```shell
+qin media 2gif -i /usr/test.mp4 -o /usr/test.gif
+```
+
+- `-i` 源文件
+- `-o` 转好的文件
+
+## 媒体剪切
+
+```shell
+qin media cut -i /usr/test.mp4 -s 10 -e 20 -o /output.mp4
+```
+
+- `-i` 被剪切的文件路径
+- `-s` 开始时间（单位秒）
+- `-e` 结束时间（单位秒）
+- `-o` 输出的文件
 
 ## 文件删除
 

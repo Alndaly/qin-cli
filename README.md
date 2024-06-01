@@ -15,6 +15,8 @@ Given the frequent need for various small tools, I plan to create a script libra
 - The default configuration file is `~/.qin/config.json`.
 - The default temporary trash folder is `~/.qin/trash`.
 
+If you need the image upload function of this project, please make sure to configure the `oss` related fields in the `config.json` file.
+
 ## Download
 
 ### Download from pip (Recommended)
@@ -50,7 +52,27 @@ qin media download -u https://www.bilibili.com/video/BV117411J719 -f mp3
 - `-u` Video URL
 - `-f` Video format supports mp3/mp4
 
-If the media file is a video, it will be automatically converted to mp3 format.
+> If the media file is a video, it will be automatically converted to mp3 format.
+
+## video to gif
+
+```shell
+qin media 2gif -i /usr/test.mp4 -o /usr/test.gif
+```
+
+- `-i` path of the source video file
+- `-o` the path to the gif
+
+## media cutting
+
+```shell
+qin media cut -i /usr/test.mp4 -s 10 -e 20 -o /output.mp4
+```
+
+- `-i` The path to the file you want to cut 
+- `-s` The start time of the clip (in seconds)
+- `-e` The end time of the clip (in seconds)
+- `-o` The path of the cutted file
 
 ## File Deletion
 
