@@ -54,7 +54,7 @@ qin media download -u https://www.bilibili.com/video/BV117411J719 -f mp3
 
 > If the media file is a video, it will be automatically converted to mp3 format.
 
-## video to gif
+## Video to Gif
 
 ```shell
 qin media 2gif -i /usr/test.mp4 -o /usr/test.gif
@@ -63,7 +63,7 @@ qin media 2gif -i /usr/test.mp4 -o /usr/test.gif
 - `-i` path of the source video file
 - `-o` the path to the gif
 
-## media cutting
+## Media Cutting
 
 ```shell
 qin media cut -i /usr/test.mp4 -s 10 -e 20 -o /output.mp4
