@@ -3,6 +3,8 @@ import typer
 import oss2
 import time
 import pymupdf
+import zipfile
+from pathlib import Path
 from typing import Annotated
 from tqdm import tqdm
 from rich import print
@@ -35,6 +37,14 @@ def get_all_files_in_directory(path: str):
             file_path = os.path.join(foldername, filename)  # 构建文件的完整路径
             all_files.append(file_path)
     return all_files
+
+@file_app.command('unzip', help='Unzip files')
+def unzip(path: Annotated[str, typer.Option("--path", "-p", help="Path to the zip file")]):
+    file_item = Path(path)
+    zip_file = zipfile.ZipFile(file_item)
+    zip_file.extractall(file_item.name)
+    zip_file.close()
+    print(f"{path} 解压成功")
     
 @file_app.command("pdf2png", help="Convert PDF to PNG")
 def pdf2png(path: Annotated[str, typer.Option("--path", "-p", help="Path to the PDF file")]):

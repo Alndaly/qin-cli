@@ -19,13 +19,13 @@ If you need the image upload function of this project, please make sure to confi
 
 ## Download
 
-### Download from pip (Recommended)
+### Method1: Download from pip (Recommended)
 
 ```shell
 pip install qin
 ```
 
-### Clone the Project
+### Method2: Clone the Project
 
 ```shell
 git clone git@github.com:Alndaly/qin-cli.git
@@ -54,7 +54,7 @@ qin media download -u https://www.bilibili.com/video/BV117411J719 -f mp3
 
 > If the media file is a video, it will be automatically converted to mp3 format.
 
-## video to gif
+## Video to Gif
 
 ```shell
 qin media 2gif -i /usr/test.mp4 -o /usr/test.gif
@@ -63,7 +63,7 @@ qin media 2gif -i /usr/test.mp4 -o /usr/test.gif
 - `-i` path of the source video file
 - `-o` the path to the gif
 
-## media cutting
+## Media Cutting
 
 ```shell
 qin media cut -i /usr/test.mp4 -s 10 -e 20 -o /output.mp4
@@ -100,3 +100,19 @@ qin file pdf2png -p path/to/your/file
 ```
 
 - `-p` Path to the PDF file to be converted
+
+## Get Model Information from Model File (CivitAI)
+
+```shell
+qin ai model -p path/to/your/file
+```
+
+- `-p`: The path to the file for which you want to retrieve information
+
+## Get Hash of Model File
+
+```shell
+qin ai hash -p path/to/your/file
+```
+
+- `-p`: The path to the file for which you want to retrieve the hash

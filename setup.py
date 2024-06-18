@@ -7,7 +7,7 @@ with open("./README.md", "r", encoding="utf-8") as fp:
 
 with open("./LICENSE", "r", encoding="utf-8") as fp:
     license = fp.read()
-    
+
 setup(
     name="qin",
     version="0.1.0",
@@ -30,5 +30,5 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     platforms="macOS",
-    install_requires=['typer', 'ffmpeg-python', 'oss2', 'gradio', 'yt-dlp', 'fastapi', 'moviepy']
+    install_requires=['typer', 'ffmpeg-python', 'oss2', 'gradio', 'yt-dlp', 'fastapi', 'moviepy', 'zipfile', 'httpx']
 )
