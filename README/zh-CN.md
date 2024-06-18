@@ -100,3 +100,17 @@ qin file pdf2png -p path/to/your/file
 ```
 
 - `p` 要转换的pdf文件路径
+
+## 获取模型文件的模型信息（civitai）
+
+```shell
+qin ai model -p path/to/your/file
+```
+
+- `-p` 要获取信息的文件路径
+
+## 获取模型文件的hash
+
+```shell
+qin ai hash -p path/to/your/file
+```

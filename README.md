@@ -19,13 +19,13 @@ If you need the image upload function of this project, please make sure to confi
 
 ## Download
 
-### Download from pip (Recommended)
+### Method1: Download from pip (Recommended)
 
 ```shell
 pip install qin
 ```
 
-### Clone the Project
+### Method2: Clone the Project
 
 ```shell
 git clone git@github.com:Alndaly/qin-cli.git
@@ -100,3 +100,19 @@ qin file pdf2png -p path/to/your/file
 ```
 
 - `-p` Path to the PDF file to be converted
+
+## Get Model Information from Model File (CivitAI)
+
+```shell
+qin ai model -p path/to/your/file
+```
+
+- `-p`: The path to the file for which you want to retrieve information
+
+## Get Hash of Model File
+
+```shell
+qin ai hash -p path/to/your/file
+```
+
+- `-p`: The path to the file for which you want to retrieve the hash
