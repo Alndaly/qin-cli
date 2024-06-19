@@ -114,3 +114,12 @@ qin ai model -p path/to/your/file
 ```shell
 qin ai hash -p path/to/your/file
 ```
+
+## 更新某目录下的所有git仓库
+
+```shell
+qin git pull -p path/to/the/dir -r
+```
+
+- `-p` 要更新的git仓库的根目录（不写`-p path/to/the/dir`的话默认就是当前目录）
+- `-r` 是否递归子文件夹，默认`False`

@@ -116,3 +116,12 @@ qin ai hash -p path/to/your/file
 ```
 
 - `-p`: The path to the file for which you want to retrieve the hash
+
+## Update all git repositories in a directory
+
+```shell
+qin git pull -p path/to/the/dir -r
+```
+
+- `-p` The root directory of the git repositories to be updated (if `-p path/to/the/dir` is not specified, the default is the current directory)
+- `-r` Whether to recursively update subfolders, default is `False`
