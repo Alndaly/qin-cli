@@ -27,8 +27,10 @@ create_root()
 from .media import media_app
 from .file import file_app
 from .ai import ai_app
+from .git import git_app
 
 app = typer.Typer()
 app.add_typer(file_app, name='file')
 app.add_typer(media_app, name='media')
 app.add_typer(ai_app, name='ai')
+app.add_typer(git_app, name='git')
