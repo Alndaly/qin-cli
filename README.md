@@ -117,6 +117,15 @@ qin ai hash -p path/to/your/file
 
 - `-p`: The path to the file for which you want to retrieve the hash
 
+## Get preview images of all model files in the current directory and save them by name in the current directory
+
+```shell
+qin ai preview -p path/to/the/dir -r
+```
+
+- `-p` The path to the folder from which you want to get preview images
+- `-r` Whether to recursively include subfolders
+
 ## Update all git repositories in a directory
 
 ```shell

@@ -22,4 +22,7 @@ def calculate_file_hash(file_path, hash_algorithm='sha256'):
 def get_civitai_model_info_by_hash(hash: str):
     url = f'https://civitai.com/api/v1/model-versions/by-hash/{hash}'
     response = httpx.get(url)
-    return response.json()
+    if(response.status_code == 200):
+        return response.json()
+    else:
+        return None
