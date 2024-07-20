@@ -115,6 +115,15 @@ qin ai model -p path/to/your/file
 qin ai hash -p path/to/your/file
 ```
 
+## 获取当前文件夹下所有模型文件的预览图并且按名字保存到当前目录
+
+```shell
+qin ai preview -p path/to/the/dir -r
+```
+
+- `-p` 要获取预览图的文件夹路径
+- `-r` 是否递归子文件夹
+
 ## 更新某目录下的所有git仓库
 
 ```shell

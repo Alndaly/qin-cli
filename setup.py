@@ -30,5 +30,5 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     platforms="macOS",
-    install_requires=['typer', 'ffmpeg-python', 'oss2', 'gradio', 'yt-dlp', 'fastapi', 'moviepy', 'zipfile', 'httpx', 'urllib3>=2.0']
+    install_requires=['typer', 'ffmpeg-python', 'oss2', 'gradio', 'yt-dlp', 'fastapi', 'moviepy', 'httpx', 'urllib3>=2.0']
 )
